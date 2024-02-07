@@ -6,27 +6,35 @@ using System.Threading.Tasks;
 
 namespace LambdaExpressions
 {
+    class Student
+    {
+        public int Rollno { get; set; }
+        public string Name { get; set; }
+    }
     internal class Program
     {
         static void Main()
         {
-            List<int> list = new List<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
-            Console.Write("The list : ");
+            List<Student> list = new List<Student>()
+            {
+                new Student { Rollno=1, Name="Rahul"},
+                new Student { Rollno=2, Name="Anu"},
+                new Student { Rollno=3, Name="Namit"},
+                new Student { Rollno=4, Name="Dinesh"},
+                new Student { Rollno=5, Name="Siddhant"}
+            };
+            Console.Write("The list of student : \n");
             foreach (var i in list)
             {
-                Console.Write("{0} ",i);
+                Console.WriteLine($"{i.Rollno} : {i.Name}");
             }
             Console.WriteLine();
 
-            var integers=list.FindAll(x => (x%2)==0);
-            Console.Write("The list for 2 factors are: ");
+            var integers=list.OrderBy(x =>x.Name);
+            Console.Write("The updated list is: \n");
             foreach (var d in integers)
             {
-                Console.Write("{0} ",d);
+                Console.WriteLine($"{d.Rollno} : {d.Name}");
             }
             Console.ReadLine();
         }
