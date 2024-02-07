@@ -10,20 +10,16 @@ namespace LambdaExpressions
     
     internal class Program
     {
-        public void Addnums(int a, int b)
-        {
-            Console.WriteLine(a+b);
-        }
-        public void Mulnums(int a, int b)
-        {
-            Console.WriteLine(a*b);
-        }
+        
         static void Main(string[] args)
         { 
-            Program program = new Program();
-            AddDelegate ad = new AddDelegate(program.Addnums);
-            ad += program.Mulnums;
-            ad.Invoke(100, 50);
+            
+            AddDelegate ad = delegate(int a, int b)
+            {
+                Console.WriteLine(a + b);
+                Console.WriteLine(a*b);
+            };
+            ad.Invoke(100,50);
             Console.ReadLine();
         }
     }
